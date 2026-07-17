@@ -1,0 +1,22 @@
+[
+    {
+        "name": "SwiftBrew Pro",
+        "category": "Smart Coffee Maker",
+        "description": "A Wi-Fi connected coffee maker that learns your daily schedule and brews fresh coffee automatically. Includes a built-in grinder, precision temperature control, and a companion mobile app."
+    },
+    {
+        "name": "ZenDesk Chair",
+        "category": "Ergonomic Office Chair",
+        "description": "An AI-posture-sensing office chair that gives real-time feedback to correct your sitting posture. Features lumbar support, adjustable armrests, and a breathable mesh back."
+    },
+    {
+        "name": "FitTrack Band",
+        "category": "Fitness Tracker",
+        "description": "A lightweight wristband that monitors heart rate, sleep quality, steps, and stress levels. Waterproof to 50 m, 10-day battery life, syncs with iOS and Android."
+    },
+    {
+        "name": "CloudNest VPN",
+        "category": "Privacy VPN Service",
+        "description": "A no-log VPN with servers in 60+ countries, split tunneling, a kill switch, and military-grade encryption. Subscription-based with a 30-day money-back guarantee."
+    }
+]
