@@ -27,6 +27,18 @@ Description: {product["description"]}
 
 Return ONLY the tagline. No explanation, no quotes."""
 
+prompt_long = f""""write a long, detailed ad
+
+Product: {product["name"]}
+Category: {product["category"]}
+Description: {product["description"]}"""
+
+prompt_short = f""""write a short ad
+
+Product: {product["name"]}
+Category: {product["category"]}
+Description: {product["description"]}"""
+
 payload = {
     "model": MODEL,
     "messages": [
@@ -47,7 +59,8 @@ for temp, tokens in zip(steps, length):
         response = requests.post(
             url=ENDPOINT,
             headers=HEADERS,
-            json=payload
+            json=payload,
+            timeout=10,
         )
         response.raise_for_status() 
         
