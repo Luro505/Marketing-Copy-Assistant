@@ -41,6 +41,5 @@ To achieve distinct writing styles for different marketing assets, the assistant
 ├── output/
 │   └── marketing_kit.json     # Generated and structured marketing assets
 ├── config.py                  # Model and parameter configurations per asset type
-├── generator.py               # Main pipeline logic and API integration
-├── requirements.txt           # Project dependencies
+├── generator.py               # Main pipeline logic and API integration 
 └── main.py                    # CLI entry point to run the pipeline
