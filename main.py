@@ -31,7 +31,6 @@ Description: {product["description"]}
 Return ONLY the tagline. No explanation, no quotes."""
 
 PROMPT_LONG = f"""write a long, detailed ad
-
 Product: {product["name"]}
 Category: {product["category"]}
 Description: {product["description"]}"""
@@ -62,8 +61,7 @@ for temp, tokens in zip(steps, length):
             url=ENDPOINT,
             headers=HEADERS,
             json=payload,
-            timeout=10,
-        )
+            timeout=10,)
         response.raise_for_status()
         reply = response.json()["choices"][0]["message"]["content"].strip()
         print(f"Long prompt (temp: {temp}, tokens: {tokens}):\n{reply}")
