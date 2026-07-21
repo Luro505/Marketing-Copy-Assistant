@@ -1,3 +1,5 @@
+""" Module for generating marketing assets using LLMs """
+
 import json
 import requests
 import os
@@ -54,7 +56,6 @@ length = [20, 60, 80]
 for temp, tokens in zip(steps, length):
     payload["temperature"] = temp
     payload["max_tokens"] = tokens
-    
     try:
         response = requests.post(
             url=ENDPOINT,
@@ -63,9 +64,7 @@ for temp, tokens in zip(steps, length):
             timeout=10,
         )
         response.raise_for_status() 
-        
         reply = response.json()["choices"][0]["message"]["content"].strip()
         print(f"Long prompt (temp: {temp}, tokens: {tokens}):\n{reply}")
-        
     except requests.exceptions.HTTPError as e:
         print(f"Błąd dla pary temp: {temp}, tokens: {tokens} -> Status: {e.response.status_code}")
