@@ -1,9 +1,10 @@
 """ Module for generating marketing assets using LLMs """
 
+import os
 import json
 import requests
-import os
 
+# Environment variables
 API_KEY = os.environ.get('API_KEY')
 BASE_URL = os.environ.get('BASE_URL')
 
@@ -21,7 +22,7 @@ with open("products.json", "r", encoding="utf-8") as file:
 
 product = PRODUCTS[0]  # SwiftBrew Pro
 
-prompt = f"""Write a single punchy tagline for the following product.
+PROMPT = f"""Write a single punchy tagline for the following product.
 
 Product: {product["name"]}
 Category: {product["category"]}
@@ -29,13 +30,13 @@ Description: {product["description"]}
 
 Return ONLY the tagline. No explanation, no quotes."""
 
-prompt_long = f""""write a long, detailed ad
+PROMPT_LONG = f"""write a long, detailed ad
 
 Product: {product["name"]}
 Category: {product["category"]}
 Description: {product["description"]}"""
 
-prompt_short = f""""write a short ad
+PROMPT_SHORT = f"""write a short ad
 
 Product: {product["name"]}
 Category: {product["category"]}
@@ -44,7 +45,7 @@ Description: {product["description"]}"""
 payload = {
     "model": MODEL,
     "messages": [
-        {"role": "user", "content": prompt}
+        {"role": "user", "content": PROMPT}
     ],
     "temperature": 0.7,
     "max_tokens": 200
@@ -63,7 +64,7 @@ for temp, tokens in zip(steps, length):
             json=payload,
             timeout=10,
         )
-        response.raise_for_status() 
+        response.raise_for_status()
         reply = response.json()["choices"][0]["message"]["content"].strip()
         print(f"Long prompt (temp: {temp}, tokens: {tokens}):\n{reply}")
     except requests.exceptions.HTTPError as e:
